@@ -8,7 +8,7 @@ export default function Booking() {
   const [title, setTitle] = useState('') 
   const [desc, setDesc] = useState('')
   const [roomNo, setRoomNo] = useState('')
-  
+  const [err, setErr] = useState(false)
     
  // Read all todos
  useEffect(() => {
@@ -43,6 +43,7 @@ const addTodoHandler = () => {
   )
     .then(res => {
       console.log(res);
+      setErr(true);
     }
       
       )
@@ -70,7 +71,7 @@ const addTodoHandler = () => {
     
     </div>
     </div>
-    <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>
+    <h6 className="card text-dark bg-warning py-1 mb-0" ><b>{err ? 'Booked Successfully' : 'Hurry up to get your seat!!'}</b></h6>
   </div>
   );
 }

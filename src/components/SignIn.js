@@ -7,7 +7,7 @@ export default function SignIn() {
   const [todoList, setTodoList] = useState([{}])
   const [title, setTitle] = useState('') 
   const [desc, setDesc] = useState('')
-  
+  const [err, setErr] = useState(false)
     
 
 
@@ -30,8 +30,9 @@ const addTodoHandler = () => {
   )
     .then(res => {
       console.log(res);
-      if(res.status == 200){
-        localStorage.setItem("token",res.data.access_token)
+      if(res.status === 200){
+        localStorage.setItem("token",res.data.access_token);
+        setErr(true);
       }
     
     }
@@ -52,12 +53,12 @@ const addTodoHandler = () => {
       <input className="mb-2 form-control desIn" onChange={event => setDesc(event.target.value)}   placeholder='Password'/>
     <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={addTodoHandler}>Log In</button>
     </span>
-    <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+    
     <div >
     
     </div>
     </div>
-    <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>
+    <h6 className="card text-dark bg-warning py-1 mb-0" >The user is <b>{err ? 'currently' : 'not'}</b> logged in.</h6>
   </div>
   );
 }

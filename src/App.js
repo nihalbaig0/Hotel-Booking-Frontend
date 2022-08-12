@@ -16,8 +16,8 @@ import AddRoom from "./components/AddRoom";
 export default function App() {
   return (
    <div className="App">
-    <nav  class="navbar navbar-dark bg-dark">
-      <ul>
+    <nav  className="navbar navbar-dark bg-dark ">
+      <ul className="nav">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/signin">SignIn</Link></li>
         <li><Link to="/signup">SignUp</Link></li>

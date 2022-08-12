@@ -8,7 +8,7 @@ export default function RoomType() {
   const [title, setTitle] = useState('') 
   const [desc, setDesc] = useState('')
   const [roomNo, setRoomNo] = useState('')
-  
+  const [err, setErr] = useState(false)
     
 // Read all todos
 useEffect(() => {
@@ -22,6 +22,7 @@ useEffect(() => {
     )
     .then(res => {
       setTodoList(res.data)
+      
     })
 },[title]);
 
@@ -43,6 +44,7 @@ const addTodoHandler = () => {
   )
     .then(res => {
       console.log(res);
+      setErr(true);
     }
       
       )
@@ -62,12 +64,12 @@ const addTodoHandler = () => {
       <input className="mb-2 form-control desIn" onChange={event => setRoomNo(event.target.value)}   placeholder='Max Capacity'/>
     <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={addTodoHandler}>Add Room Type</button>
     </span>
-    <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+    <h5 className="card text-white bg-dark mb-3">Your Room Types</h5>
     <div >
       <RoomTypeTodoView todoList={todoList} />
       </div>
     </div>
-    <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>
+    <h6 className="card text-dark bg-warning py-1 mb-0" ><b>{err ? 'Room Type Added' : 'Give your custom Room!'}</b></h6>
   </div>
   );
 }

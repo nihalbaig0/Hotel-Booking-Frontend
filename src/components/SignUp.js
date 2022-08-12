@@ -4,19 +4,15 @@ import axios from 'axios';
 
 export default function SignUp() {
 
-  const [todoList, setTodoList] = useState([{}])
+
   const [title, setTitle] = useState('') 
   const [desc, setDesc] = useState('')
-  
+  const [err, setErr] = useState(false)
     
 
 
 
-//   // Post a todo
-//   const addTodoHandler = () => {
-//     axios.post('http://127.0.0.1:8000/login/', { 'username': title, 'password': desc })
-//       .then(res => console.log(res))
-// };
+
 
 // Post a todo
 const addTodoHandler = () => {
@@ -27,6 +23,7 @@ const addTodoHandler = () => {
   )
     .then(res => {
       console.log(res);
+      setErr(true);
     }
       
       )
@@ -45,12 +42,13 @@ const addTodoHandler = () => {
       <input className="mb-2 form-control desIn" onChange={event => setDesc(event.target.value)}   placeholder='Password'/>
     <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={addTodoHandler}>Create New Account</button>
     </span>
-    <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+   
     <div >
     
     </div>
     </div>
-    <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>
+    <h6 className="card text-dark bg-warning py-1 mb-0" ><b>{err ? 'Sign Up Successful' : 'Sign Up now!!!'}</b></h6>
+    
   </div>
   );
 }
